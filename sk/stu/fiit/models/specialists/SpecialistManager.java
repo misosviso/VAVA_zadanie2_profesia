@@ -9,14 +9,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Singleton class, which is responsible for operations over list of all specialists
  * @author Admin
  */
 public class SpecialistManager {
     
     
     private static SpecialistManager instanceOfSM = null;
-    private static List<Specialist> specialists;
+    private List<Specialist> specialists;
 
     public static SpecialistManager getSpecialistManager() {
         if(instanceOfSM == null)
@@ -25,14 +25,14 @@ public class SpecialistManager {
     }
 
     private SpecialistManager() {
-        SpecialistManager.specialists = new LinkedList<>();
+        this.specialists = new LinkedList<>();
     }
         
     public void addSpecialist(Specialist specialist){
-        SpecialistManager.specialists.add(specialist);
+        this.specialists.add(specialist);
     }
 
-    public static List<Specialist> getSpecialists() {
+    public List<Specialist> getSpecialists() {
         return specialists;
     }
     

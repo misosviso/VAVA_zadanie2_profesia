@@ -40,11 +40,11 @@ public abstract class Specialist {
         System.out.println("meno administratora = " + objAdministrator.getName());
         
         SpecialistManager objManager = SpecialistManager.getSpecialistManager();
-        System.out.println(SpecialistManager.getSpecialists());
+        System.out.println(objManager.getSpecialists());
         
         objManager.addSpecialist(objSecuritySpecialist);
         SpecialistManager objManager2 = SpecialistManager.getSpecialistManager();
-        System.out.println(SpecialistManager.getSpecialists());
+        System.out.println(objManager.getSpecialists());
         
         
     }
