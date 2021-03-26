@@ -5,6 +5,8 @@
  */
 package sk.stu.fiit.models;
 
+import java.util.List;
+
 /**
  *
  * @author Admin
@@ -12,5 +14,10 @@ package sk.stu.fiit.models;
 public class SecuritySpecialist extends Specialist{
     
     private boolean NBU;
+
+    public SecuritySpecialist(String name, double MDcost, int experience, String highestEducation, List<String> certificates, boolean NBU) {
+        super(name, MDcost, experience, highestEducation, certificates);
+        this.NBU = NBU;
+    }
     
 }

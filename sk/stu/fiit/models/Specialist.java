@@ -13,12 +13,27 @@ import java.util.List;
  */
 public abstract class Specialist {
     
-    private String name;
-    private double MDcost;
-    private int experience;
-    private String highestEducation;
-    private boolean hired;
-    private List<String> certificates;
+    protected String name;
+    protected double MDcost;
+    protected int experience;
+    protected String highestEducation;
+    protected boolean hired;
+    protected List<String> certificates;
+
+    protected Specialist(String name, double MDcost, int experience, String highestEducation, List<String> certificates){
+        this.name = name;
+        this.MDcost = MDcost;
+        this.experience = experience;
+        this.highestEducation = highestEducation;
+        this.hired = false;
+        this.certificates = certificates;
+    }
+    
+    public static void main(String[] args) {
+        
+        // Programmer objProgrammer = new Programmer("Meno", 1.47, 10, "FIIT", false, null, "python");
+        
+    }
 
     public List<String> getCertificates() {
         return certificates;

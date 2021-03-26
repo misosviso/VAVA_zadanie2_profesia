@@ -5,6 +5,8 @@
  */
 package sk.stu.fiit.models;
 
+import java.util.List;
+
 /**
  *
  * @author Admin
@@ -12,5 +14,23 @@ package sk.stu.fiit.models;
 public class Programmer extends Specialist{
     
     private String type;
+
+    /**
+     *
+     * @param name
+     * @param MDcost
+     * @param experience
+     * @param highestEducation
+     * @param certificates
+     * @param type
+     */
+    public Programmer(String name, double MDcost, int experience, String highestEducation, List<String> certificates, String type) {
+        super(name, MDcost, experience, highestEducation, certificates);
+        this.type = type;
+    }
+
+
+    
+    
     
 }
