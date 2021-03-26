@@ -5,18 +5,12 @@
  */
 package sk.stu.fiit.models;
 
-import java.awt.image.BufferedImage;
-
 /**
  *
  * @author Admin
  */
-public class Employer {
+public class Programmer extends Specialist{
     
-    private String name;
-    private String sector;
-    private int numberOfEmployees;
-    private BufferedImage logo;
-    
+    private String type;
     
 }
