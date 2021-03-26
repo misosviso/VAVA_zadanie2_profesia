@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.stu.fiit.models;
+package sk.stu.fiit.models.specialists;
 
 import java.util.List;
 
@@ -31,7 +31,21 @@ public abstract class Specialist {
     
     public static void main(String[] args) {
         
-        // Programmer objProgrammer = new Programmer("Meno", 1.47, 10, "FIIT", false, null, "python");
+        Programmer objProgrammer = Programmer.getProgrammer("Programator Peto", 1.47, 10, "FIIT", null, "python");
+        SecuritySpecialist objSecuritySpecialist = SecuritySpecialist.getSecuritySpecialist("Bezpecak Brano", 1.47, 10, "FIIT", null, false);
+        Administrator objAdministrator = Administrator.getAdministrator("Aministrator Adam", 1.47, 10, "FIIT", null, "SAP", "platforma");
+        
+        System.out.println("meno programatora = " + objProgrammer.getName());
+        System.out.println("meno bezpecaka = " + objSecuritySpecialist.getName());
+        System.out.println("meno administratora = " + objAdministrator.getName());
+        
+        SpecialistManager objManager = SpecialistManager.getSpecialistManager();
+        System.out.println(SpecialistManager.getSpecialists());
+        
+        objManager.addSpecialist(objSecuritySpecialist);
+        SpecialistManager objManager2 = SpecialistManager.getSpecialistManager();
+        System.out.println(SpecialistManager.getSpecialists());
+        
         
     }
 
