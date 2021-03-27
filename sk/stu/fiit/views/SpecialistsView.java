@@ -13,7 +13,7 @@ import sk.stu.fiit.controllers.SpecialistManagerController;
  *
  * @author Admin
  */
-public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
+public final class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
     
     private final SpecialistManagerController controller = new SpecialistManagerController();
 
@@ -26,7 +26,7 @@ public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
         displaySpecialists();
     }
     
-    private void displaySpecialists(){
+    public void displaySpecialists(){
         DefaultListModel quickModel = controller.getQuickModel();
         this.specialistsList.setModel(quickModel);
     }
@@ -119,7 +119,7 @@ public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
 
     private void addBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseReleased
         // TODO add your handling code here:
-        new AddSpecialistView().setVisible(true);
+        new AddSpecialistView(this.controller, this).setVisible(true);
     }//GEN-LAST:event_addBtnMouseReleased
 
     private void hireBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hireBtnMouseReleased

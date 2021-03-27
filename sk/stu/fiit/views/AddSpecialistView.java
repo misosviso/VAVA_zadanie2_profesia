@@ -5,20 +5,31 @@
  */
 package sk.stu.fiit.views;
 
+import java.text.ParseException;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import sk.stu.fiit.controllers.SpecialistManagerController;
 
 /**
  *
  * @author Admin
  */
 public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
+    
+    private final SpecialistManagerController controller;
+    private final SpecialistsView parent;
 
     /**
      * Creates new form AddSpecialistView
+     * @param controller
      */
-    public AddSpecialistView() {
+    public AddSpecialistView(SpecialistManagerController controller, SpecialistsView parent) {
         initComponents();
         setDarkNimbus();
+        this.controller = controller;
+        this.parent = parent;
     }
 
     /**
@@ -55,20 +66,20 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jLabel7 = new javax.swing.JLabel();
         changingLB1 = new javax.swing.JLabel();
         changingLB2 = new javax.swing.JLabel();
-        xpTF = new javax.swing.JTextField();
         eduTF = new javax.swing.JTextField();
         certificatesTF = new javax.swing.JTextField();
         changingTF1 = new javax.swing.JTextField();
         changingTF2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         NBUChB = new javax.swing.JCheckBox();
+        xpSpinner = new javax.swing.JSpinner();
         MDPanel = new javax.swing.JPanel();
         jToolBar5 = new javax.swing.JToolBar();
         goMenuBtn2 = new javax.swing.JButton();
         jToolBar6 = new javax.swing.JToolBar();
         confirmBtn2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        MDSpinner = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -79,7 +90,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
         jTextField1.setText("jTextField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
@@ -155,21 +166,20 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
         infoPanel.add(jToolBar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 90, 40));
 
-        jLabel5.setText("Dĺžka praxe");
-        infoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 46, -1, 30));
+        jLabel5.setText("Dĺžka praxe(v rokoch)");
+        infoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 190, 30));
 
         jLabel6.setText("Najvyššie dosiahnuté vzdelanie");
-        infoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 76, -1, 30));
+        infoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 30));
 
-        jLabel7.setText("Získané certifikáty");
-        infoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, 30));
+        jLabel7.setText("Získané certifikáty(oddelené čiarkami)");
+        infoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 200, 30));
 
         changingLB1.setVisible(false);
-        infoPanel.add(changingLB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 30));
+        infoPanel.add(changingLB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, 30));
 
         changingLB2.setVisible(false);
-        infoPanel.add(changingLB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 90, 30));
-        infoPanel.add(xpTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 160, -1));
+        infoPanel.add(changingLB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 90, 30));
         infoPanel.add(eduTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 160, -1));
         infoPanel.add(certificatesTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 160, -1));
 
@@ -186,6 +196,9 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
         NBUChB.setVisible(false);
         infoPanel.add(NBUChB, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        xpSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        infoPanel.add(xpSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 160, -1));
 
         jTabbedPane1.addTab("Údaje", infoPanel);
 
@@ -221,8 +234,8 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jLabel9.setText("Určite cenu za Man-Day");
         MDPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, -1));
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(50, 0, null, 5));
-        MDPanel.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 90, -1));
+        MDSpinner.setModel(new javax.swing.SpinnerNumberModel(50, 0, null, 5));
+        MDPanel.add(MDSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 90, -1));
 
         jLabel11.setText("Cena");
         MDPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, 30));
@@ -249,50 +262,63 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
     private void confirmBtn1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmBtn1MouseReleased
         // TODO add your handling code here:
-        
+        if(this.eduTF.getText().equals("")){
+            JOptionPane.showMessageDialog(introPanel, "Zadajte najvyššie dosiahnuté vzdelanie");
+        }
+        goToNextTab();
     }//GEN-LAST:event_confirmBtn1MouseReleased
 
     private void confirmBtn2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmBtn2MouseReleased
         // TODO add your handling code here:
+        if(this.nameTF.getText().equals("")){
+            JOptionPane.showMessageDialog(introPanel, "Nezadali ste meno");
+            return;
+        } 
+        String name = nameTF.getText();
+        double MDcost;
+        try {
+            MDcost = getMD();
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(introPanel, "Man-Day cena je v nesprávnom formáte");
+            return;
+        }
+        int XP;
+        try {
+            XP = getXP();
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(introPanel, "Prax je v nesprávnom formáte");
+            return;
+        }
+        if(this.eduTF.getText().equals("")){
+            JOptionPane.showMessageDialog(introPanel, "Nezadali ste najvyššie dosiahnuté vzdelanie");
+            return;
+        }
+        String edu = this.eduTF.getText();
+        List<String> certs = Arrays.asList((String[]) certificatesTF.getText().split(","));
+        
+        switch(typeCB.getSelectedIndex()){
+            case 0 -> {
+                String type = changingTF1.getText();
+                this.controller.addProgrammer(name, MDcost, XP, edu, certs, type);
+            }
+            case 1 -> {
+                boolean NBU = NBUChB.isSelected();
+                this.controller.addSecuritySpecialist(name, MDcost, XP, edu, certs, NBU);
+            }
+            case 2 -> {
+                String type = changingTF1.getText();
+                String platform = changingTF2.getText();
+                this.controller.addAdministrator(name, MDcost, XP, edu, certs, type, platform);
+            }         
+        }       
+        this.parent.displaySpecialists();
+        dispose();
     }//GEN-LAST:event_confirmBtn2MouseReleased
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddSpecialistView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddSpecialistView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddSpecialistView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddSpecialistView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddSpecialistView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MDPanel;
+    private javax.swing.JSpinner MDSpinner;
     private javax.swing.JCheckBox NBUChB;
     private javax.swing.JTextField certificatesTF;
     private javax.swing.JLabel changingLB1;
@@ -320,7 +346,6 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
@@ -331,7 +356,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JToolBar jToolBar6;
     private javax.swing.JTextField nameTF;
     private javax.swing.JComboBox<String> typeCB;
-    private javax.swing.JTextField xpTF;
+    private javax.swing.JSpinner xpSpinner;
     // End of variables declaration//GEN-END:variables
 
     private void setProgrammer() {
@@ -361,5 +386,14 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private void goToNextTab(){
         int currentIndex = jTabbedPane1.getSelectedIndex();
         jTabbedPane1.setSelectedIndex(currentIndex + 1);
+    }
+    private int getXP() throws ParseException{
+        xpSpinner.commitEdit();
+        return (Integer) xpSpinner.getValue();
+        
+    }
+    private int getMD() throws ParseException{
+        MDSpinner.commitEdit();
+        return (Integer) MDSpinner.getValue();
     }
 }

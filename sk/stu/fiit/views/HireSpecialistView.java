@@ -26,10 +26,10 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
         setDarkNimbus();
         this.controller = controller;
         this.specialistIndex = specialistIndex;
-        displayFreeLancer();
+        displayFreeLancers();
     }
     
-    private void displayFreeLancer(){
+    private void displayFreeLancers(){
         this.specialistInfoTP.setText(this.controller.getSpecialistInfo(specialistIndex));     
     }
 
@@ -58,7 +58,7 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
 
         jLabel4.setText("jLabel4");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

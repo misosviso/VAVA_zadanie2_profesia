@@ -27,7 +27,7 @@ public abstract class Specialist implements GetInformation{
         this.experience = experience;
         this.highestEducation = highestEducation;
         this.hired = false;
-        if(this.certificates == null){
+        if(certificates == null){
             this.certificates = new LinkedList<>();
         } else{
             this.certificates = certificates;
@@ -123,11 +123,12 @@ public abstract class Specialist implements GetInformation{
         information.append("\nVzdelanie: " + highestEducation);
         
         information.append("\nCertifikáty: ");
+        
         if(certificates.isEmpty()){
             information.append("-");
         } else{
             certificates.forEach(cert -> {
-                information.append(cert).append(" ");
+                information.append("\n" + cert);
             });
         }
         
