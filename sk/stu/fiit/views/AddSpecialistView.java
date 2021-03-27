@@ -8,7 +8,6 @@ package sk.stu.fiit.views;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sk.stu.fiit.controllers.SpecialistManagerController;
 
@@ -381,6 +380,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         this.changingLB2.setVisible(true);
         this.changingLB2.setText("Platforma");
         this.changingTF1.setVisible(true);
+        this.changingTF2.setVisible(true);
         this.NBUChB.setVisible(false);
     }
     private void goToNextTab(){

@@ -18,7 +18,7 @@ import sk.stu.fiit.views.HireSpecialistView;
  *
  * @author Admin
  */
-public class SpecialistManagerController {
+public class SpecialistManagerController implements ListModels{
     
     private final SpecialistManager manager = SpecialistManager.getSpecialistManager();
     
@@ -35,6 +35,7 @@ public class SpecialistManagerController {
         this.manager.addSpecialist(newAdministrator);
     }
     
+    @Override
     public DefaultListModel getQuickModel(){
         List<Specialist> specialists = this.manager.getSpecialists();
         DefaultListModel specialistsModel = new DefaultListModel();

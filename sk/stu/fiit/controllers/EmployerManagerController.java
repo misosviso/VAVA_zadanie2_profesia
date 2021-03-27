@@ -8,7 +8,9 @@ package sk.stu.fiit.controllers;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListModel;
 import sk.stu.fiit.models.employers.Employer;
 import sk.stu.fiit.models.employers.EmployerManager;
 
@@ -16,7 +18,7 @@ import sk.stu.fiit.models.employers.EmployerManager;
  *
  * @author Admin
  */
-public class EmployerManagerController {
+public class EmployerManagerController implements ListModels{
     
     private final EmployerManager manager = EmployerManager.getEmployerManager();
     
@@ -32,6 +34,22 @@ public class EmployerManagerController {
         BufferedImage logo = getLogo(pathToImage);
         Employer employer = Employer.getEmployer(name, sector, NOE, logo);
         this.manager.addEmployer(employer);
+    }
+
+    @Override
+    public DefaultListModel getQuickModel() {
+        List<Employer> specialists = this.manager.getEmployers();
+        DefaultListModel specialistsModel = new DefaultListModel();
+        if (!specialists.isEmpty()) {
+            specialists.forEach((Employer employer) -> {
+            specialistsModel.addElement(
+                    employer.getName() +
+                    "sektor: " + employer.getSector() +
+                    "počet zamestnancov: " + employer.getNumberOfEmployees()
+                );
+            }); 
+        }
+        return specialistsModel;
     }
     
 }
