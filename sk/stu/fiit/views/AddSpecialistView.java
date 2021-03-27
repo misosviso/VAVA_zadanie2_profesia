@@ -31,8 +31,9 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        typePanel = new javax.swing.JPanel();
+        introPanel = new javax.swing.JPanel();
         typeCB = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
@@ -40,6 +41,8 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jLabel4 = new javax.swing.JLabel();
         jToolBar2 = new javax.swing.JToolBar();
         goMenuBtn = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        nameTF = new javax.swing.JTextField();
         infoPanel = new javax.swing.JPanel();
         jToolBar3 = new javax.swing.JToolBar();
         confirmBtn1 = new javax.swing.JButton();
@@ -56,6 +59,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         changingTF1 = new javax.swing.JTextField();
         changingTF2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        NBUBtn = new javax.swing.JRadioButton();
         MDPanel = new javax.swing.JPanel();
         jToolBar5 = new javax.swing.JToolBar();
         goMenuBtn2 = new javax.swing.JButton();
@@ -71,16 +75,18 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
         jLabel10.setText("jLabel10");
 
+        jTextField1.setText("jTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        typePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        introPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         typeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programátor", "Bezpečnostný konzultant/Špecialista", "Administrátor", " " }));
-        typePanel.add(typeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 230, 30));
+        introPanel.add(typeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 230, 30));
 
         jLabel2.setText("Špecializácia");
-        typePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 30));
+        introPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 30));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -89,12 +95,12 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         confirmBtn.setPreferredSize(new java.awt.Dimension(80, 28));
         jToolBar1.add(confirmBtn);
 
-        typePanel.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 80, 40));
+        introPanel.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 80, 40));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Vyberte špecializáciu");
-        typePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, -1));
+        jLabel4.setText("Úvod");
+        introPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, -1));
 
         jToolBar2.setFloatable(false);
         jToolBar2.setRollover(true);
@@ -103,9 +109,13 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         goMenuBtn.setPreferredSize(new java.awt.Dimension(80, 28));
         jToolBar2.add(goMenuBtn);
 
-        typePanel.add(jToolBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 90, 40));
+        introPanel.add(jToolBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 90, 40));
 
-        jTabbedPane1.addTab("Špecializácia", typePanel);
+        jLabel12.setText("Meno");
+        introPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 70, 30));
+        introPanel.add(nameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 230, -1));
+
+        jTabbedPane1.addTab("Špecializácia", introPanel);
 
         infoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -147,6 +157,9 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Zadajte údaje");
         infoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, -1));
+
+        NBUBtn.setText("jRadioButton1");
+        infoPanel.add(NBUBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, 30));
 
         jTabbedPane1.addTab("Údaje", infoPanel);
 
@@ -225,6 +238,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MDPanel;
+    private javax.swing.JRadioButton NBUBtn;
     private javax.swing.JTextField certificatesTF;
     private javax.swing.JLabel changingLB1;
     private javax.swing.JLabel changingLB2;
@@ -238,9 +252,11 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JButton goMenuBtn1;
     private javax.swing.JButton goMenuBtn2;
     private javax.swing.JPanel infoPanel;
+    private javax.swing.JPanel introPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -251,14 +267,15 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JToolBar jToolBar4;
     private javax.swing.JToolBar jToolBar5;
     private javax.swing.JToolBar jToolBar6;
+    private javax.swing.JTextField nameTF;
     private javax.swing.JComboBox<String> typeCB;
-    private javax.swing.JPanel typePanel;
     private javax.swing.JTextField xpTF;
     // End of variables declaration//GEN-END:variables
 }

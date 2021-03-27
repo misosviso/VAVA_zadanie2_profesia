@@ -97,4 +97,16 @@ public abstract class Specialist {
         this.hired = hired;
     }
     
+    public String getSpecialization(){
+        if(this instanceof Programmer){
+            return "Programátor";
+        }
+        else if(this instanceof SecuritySpecialist){
+            return "Bezpečnostný špecialista/konzultant";
+        }
+        else {
+            return "Administrátor";
+        }
+    }
+    
 }

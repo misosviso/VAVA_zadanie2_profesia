@@ -5,14 +5,16 @@
  */
 package sk.stu.fiit.views;
 
-import java.awt.Color;
-import javax.swing.UIManager;
+import javax.swing.DefaultListModel;
+import sk.stu.fiit.controllers.SpecialistManagerController;
 
 /**
  *
  * @author Admin
  */
 public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
+    
+    private final SpecialistManagerController controller = new SpecialistManagerController();
 
     /**
      * Creates new form SpecialistsView
@@ -20,6 +22,12 @@ public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
     public SpecialistsView() {
         initComponents();
         setDarkNimbus();
+        displaySpecialists();
+    }
+    
+    private void displaySpecialists(){
+        DefaultListModel quickModel = controller.getQuickModel();
+        this.specialistsList.setModel(quickModel);
     }
 
     /**
