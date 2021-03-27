@@ -12,6 +12,7 @@ import sk.stu.fiit.models.specialists.Programmer;
 import sk.stu.fiit.models.specialists.SecuritySpecialist;
 import sk.stu.fiit.models.specialists.Specialist;
 import sk.stu.fiit.models.specialists.SpecialistManager;
+import sk.stu.fiit.views.HireSpecialistView;
 
 /**
  *
@@ -19,7 +20,7 @@ import sk.stu.fiit.models.specialists.SpecialistManager;
  */
 public class SpecialistManagerController {
     
-    private SpecialistManager manager = SpecialistManager.getSpecialistManager();
+    private final SpecialistManager manager = SpecialistManager.getSpecialistManager();
     
     public void addProgrammer(String name, double MDcost, int xp, String edu, List<String> certs, String type){
         Programmer newProgrammer = Programmer.getProgrammer(name, MDcost, xp, edu, certs, type);
@@ -47,6 +48,14 @@ public class SpecialistManagerController {
             }); 
         }
         return specialistsModel;
+    }
+
+    public void hireSpecialist(int specialistIndex) {
+        
+    }
+
+    public void startHiring(int specialistIndex) {
+        new HireSpecialistView(this).setVisible(true);
     }
     
     
