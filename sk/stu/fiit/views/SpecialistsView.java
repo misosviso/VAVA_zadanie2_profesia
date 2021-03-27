@@ -12,7 +12,7 @@ import javax.swing.UIManager;
  *
  * @author Admin
  */
-public class SpecialistsView extends javax.swing.JFrame {
+public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
 
     /**
      * Creates new form SpecialistsView
@@ -31,21 +31,77 @@ public class SpecialistsView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        specialistsList = new javax.swing.JList<>();
+        jToolBar1 = new javax.swing.JToolBar();
+        addBtn = new javax.swing.JButton();
+        hireBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        specialistsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(specialistsList);
+
+        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 190));
+
+        jToolBar1.setFloatable(false);
+        jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar1.setRollover(true);
+
+        addBtn.setText("Pridať");
+        addBtn.setFocusable(false);
+        addBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        addBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                addBtnMouseReleased(evt);
+            }
+        });
+        jToolBar1.add(addBtn);
+
+        hireBtn.setText("Prenajať");
+        hireBtn.setFocusable(false);
+        hireBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        hireBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(hireBtn);
+
+        jDesktopPane1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 60, -1));
+
+        jButton1.setText("Návrat");
+        jDesktopPane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe WP", 1, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Zoznam voľných freelancerov");
+        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseReleased
+        // TODO add your handling code here:
+        new AddSpecialistView().setVisible(true);
+    }//GEN-LAST:event_addBtnMouseReleased
 
     /**
      * @param args the command line arguments
@@ -63,15 +119,11 @@ public class SpecialistsView extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SpecialistsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SpecialistsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SpecialistsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SpecialistsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -81,40 +133,15 @@ public class SpecialistsView extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void setDarkNimbus() {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        UIManager.put( "control", new Color( 128, 128, 128) );
-        UIManager.put( "info", new Color(128,128,128) );
-        UIManager.put( "nimbusBase", new Color( 18, 30, 49) );
-        UIManager.put( "nimbusAlertYellow", new Color( 248, 187, 0) );
-        UIManager.put( "nimbusDisabledText", new Color( 128, 128, 128) );
-        UIManager.put( "nimbusFocus", new Color(115,164,209) );
-        UIManager.put( "nimbusGreen", new Color(176,179,50) );
-        UIManager.put( "nimbusInfoBlue", new Color( 66, 139, 221) );
-        UIManager.put( "nimbusLightBackground", new Color( 18, 30, 49) );
-        UIManager.put( "nimbusOrange", new Color(191,98,4) );
-        UIManager.put( "nimbusRed", new Color(169,46,34) );
-        UIManager.put( "nimbusSelectedText", new Color( 255, 255, 255) );
-        UIManager.put( "nimbusSelectionBackground", new Color( 104, 93, 156) );
-        UIManager.put( "text", new Color( 230, 230, 230) );
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                System.out.println(info.getName());
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JButton hireBtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JList<String> specialistsList;
     // End of variables declaration//GEN-END:variables
 }
