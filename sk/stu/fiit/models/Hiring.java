@@ -5,18 +5,10 @@
  */
 package sk.stu.fiit.models;
 
-import java.awt.image.BufferedImage;
-
 /**
  *
  * @author Admin
  */
-public class Employer {
-    
-    private String name;
-    private String sector;
-    private int numberOfEmployees;
-    private BufferedImage logo;
-    
+public class Hiring {
     
 }

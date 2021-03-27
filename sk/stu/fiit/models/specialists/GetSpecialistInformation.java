@@ -9,7 +9,7 @@ package sk.stu.fiit.models.specialists;
  *
  * @author Admin
  */
-public interface GetInformation {
+public interface GetSpecialistInformation {
     
     abstract String getInformation();
     

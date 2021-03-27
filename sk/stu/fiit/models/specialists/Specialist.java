@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Admin
  */
-public abstract class Specialist implements GetInformation{
+public abstract class Specialist implements GetSpecialistInformation{
     
     protected String name;
     protected double MDcost;
