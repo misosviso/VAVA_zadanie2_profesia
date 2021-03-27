@@ -65,9 +65,11 @@ public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
 
+        addBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         addBtn.setText("Pridať");
         addBtn.setFocusable(false);
         addBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        addBtn.setPreferredSize(new java.awt.Dimension(73, 28));
         addBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -76,14 +78,22 @@ public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
         });
         jToolBar1.add(addBtn);
 
+        hireBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         hireBtn.setText("Prenajať");
         hireBtn.setFocusable(false);
         hireBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        hireBtn.setPreferredSize(new java.awt.Dimension(73, 28));
         hireBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        hireBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                hireBtnMouseReleased(evt);
+            }
+        });
         jToolBar1.add(hireBtn);
 
         jDesktopPane1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 60, -1));
 
+        jButton1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jButton1.setText("Návrat");
         jDesktopPane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
@@ -110,6 +120,12 @@ public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
         // TODO add your handling code here:
         new AddSpecialistView().setVisible(true);
     }//GEN-LAST:event_addBtnMouseReleased
+
+    private void hireBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hireBtnMouseReleased
+        // TODO add your handling code here:
+        int specialistIndex = this.specialistsList.getSelectedIndex();
+        this.controller.startHiring(specialistIndex);
+    }//GEN-LAST:event_hireBtnMouseReleased
 
     /**
      * @param args the command line arguments

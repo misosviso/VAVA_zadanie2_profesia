@@ -5,6 +5,8 @@
  */
 package sk.stu.fiit.views;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
@@ -59,7 +61,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         changingTF1 = new javax.swing.JTextField();
         changingTF2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        NBUBtn = new javax.swing.JRadioButton();
+        NBUChB = new javax.swing.JCheckBox();
         MDPanel = new javax.swing.JPanel();
         jToolBar5 = new javax.swing.JToolBar();
         goMenuBtn2 = new javax.swing.JButton();
@@ -80,6 +82,8 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+
         introPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         typeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programátor", "Bezpečnostný konzultant/Špecialista", "Administrátor", " " }));
@@ -91,8 +95,14 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        confirmBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         confirmBtn.setText("Potvrdiť");
         confirmBtn.setPreferredSize(new java.awt.Dimension(80, 28));
+        confirmBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                confirmBtnMouseReleased(evt);
+            }
+        });
         jToolBar1.add(confirmBtn);
 
         introPanel.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 80, 40));
@@ -105,6 +115,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar2.setFloatable(false);
         jToolBar2.setRollover(true);
 
+        goMenuBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         goMenuBtn.setText("Návrat");
         goMenuBtn.setPreferredSize(new java.awt.Dimension(80, 28));
         jToolBar2.add(goMenuBtn);
@@ -122,8 +133,14 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar3.setFloatable(false);
         jToolBar3.setRollover(true);
 
+        confirmBtn1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         confirmBtn1.setText("Potvrdiť");
         confirmBtn1.setPreferredSize(new java.awt.Dimension(80, 28));
+        confirmBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                confirmBtn1MouseReleased(evt);
+            }
+        });
         jToolBar3.add(confirmBtn1);
 
         infoPanel.add(jToolBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 80, 40));
@@ -131,6 +148,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar4.setFloatable(false);
         jToolBar4.setRollover(true);
 
+        goMenuBtn1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         goMenuBtn1.setText("Návrat");
         goMenuBtn1.setPreferredSize(new java.awt.Dimension(80, 28));
         jToolBar4.add(goMenuBtn1);
@@ -138,28 +156,36 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         infoPanel.add(jToolBar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 90, 40));
 
         jLabel5.setText("Dĺžka praxe");
-        infoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        infoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 46, -1, 30));
 
         jLabel6.setText("Najvyššie dosiahnuté vzdelanie");
-        infoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        infoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 76, -1, 30));
 
         jLabel7.setText("Získané certifikáty");
-        infoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        infoPanel.add(changingLB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 90, 20));
-        infoPanel.add(changingLB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 90, 20));
+        infoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 106, -1, 30));
+
+        changingLB1.setVisible(false);
+        infoPanel.add(changingLB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 30));
+
+        changingLB2.setVisible(false);
+        infoPanel.add(changingLB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 90, 30));
         infoPanel.add(xpTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 160, -1));
         infoPanel.add(eduTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 160, -1));
         infoPanel.add(certificatesTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 160, -1));
-        infoPanel.add(changingTF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 160, -1));
-        infoPanel.add(changingTF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 160, -1));
+
+        changingTF1.setVisible(false);
+        infoPanel.add(changingTF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 160, -1));
+
+        changingTF2.setVisible(false);
+        infoPanel.add(changingTF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 160, -1));
 
         jLabel8.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Zadajte údaje");
         infoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, -1));
 
-        NBUBtn.setText("jRadioButton1");
-        infoPanel.add(NBUBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, 30));
+        NBUChB.setVisible(false);
+        infoPanel.add(NBUChB, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
 
         jTabbedPane1.addTab("Údaje", infoPanel);
 
@@ -168,6 +194,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar5.setFloatable(false);
         jToolBar5.setRollover(true);
 
+        goMenuBtn2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         goMenuBtn2.setText("Návrat");
         goMenuBtn2.setPreferredSize(new java.awt.Dimension(80, 28));
         jToolBar5.add(goMenuBtn2);
@@ -177,8 +204,14 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar6.setFloatable(false);
         jToolBar6.setRollover(true);
 
+        confirmBtn2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         confirmBtn2.setText("Potvrdiť");
         confirmBtn2.setPreferredSize(new java.awt.Dimension(80, 28));
+        confirmBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                confirmBtn2MouseReleased(evt);
+            }
+        });
         jToolBar6.add(confirmBtn2);
 
         MDPanel.add(jToolBar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 80, 40));
@@ -200,6 +233,28 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void confirmBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmBtnMouseReleased
+        // TODO add your handling code here:
+        if(this.nameTF.getText().equals("")){
+            JOptionPane.showMessageDialog(introPanel, "Prosím zadajte meno");
+        } else{
+            switch(typeCB.getSelectedIndex()){
+            case 0 -> setProgrammer();
+            case 1 -> setSecurity();
+            case 2 -> setAdministrator();         }
+            goToNextTab();
+        }
+    }//GEN-LAST:event_confirmBtnMouseReleased
+
+    private void confirmBtn1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmBtn1MouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_confirmBtn1MouseReleased
+
+    private void confirmBtn2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmBtn2MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmBtn2MouseReleased
 
     /**
      * @param args the command line arguments
@@ -238,7 +293,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MDPanel;
-    private javax.swing.JRadioButton NBUBtn;
+    private javax.swing.JCheckBox NBUChB;
     private javax.swing.JTextField certificatesTF;
     private javax.swing.JLabel changingLB1;
     private javax.swing.JLabel changingLB2;
@@ -278,4 +333,33 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JComboBox<String> typeCB;
     private javax.swing.JTextField xpTF;
     // End of variables declaration//GEN-END:variables
+
+    private void setProgrammer() {
+        this.changingLB1.setVisible(true);
+        this.changingLB1.setText("Zaradenie");
+        this.changingLB2.setVisible(false);
+        this.changingTF1.setVisible(true);
+        this.changingTF2.setVisible(false);
+        this.NBUChB.setVisible(false);
+    }
+    private void setSecurity() {
+        this.changingLB1.setVisible(true);
+        this.changingLB1.setText("Auditor NBU");
+        this.changingLB2.setVisible(false);
+        this.changingTF1.setVisible(false);
+        this.changingTF2.setVisible(false);
+        this.NBUChB.setVisible(true);
+    }
+    private void setAdministrator() {
+        this.changingLB1.setVisible(true);
+        this.changingLB1.setText("Zaradenie:");
+        this.changingLB2.setVisible(true);
+        this.changingLB2.setText("Platforma");
+        this.changingTF1.setVisible(true);
+        this.NBUChB.setVisible(false);
+    }
+    private void goToNextTab(){
+        int currentIndex = jTabbedPane1.getSelectedIndex();
+        jTabbedPane1.setSelectedIndex(currentIndex + 1);
+    }
 }
