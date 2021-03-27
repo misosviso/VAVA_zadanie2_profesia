@@ -6,6 +6,7 @@
 package sk.stu.fiit.views;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import sk.stu.fiit.controllers.SpecialistManagerController;
 
 /**
@@ -124,7 +125,12 @@ public class SpecialistsView extends javax.swing.JFrame implements DarkNimbus{
     private void hireBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hireBtnMouseReleased
         // TODO add your handling code here:
         int specialistIndex = this.specialistsList.getSelectedIndex();
-        this.controller.startHiring(specialistIndex);
+        if (specialistIndex < 0) {
+            JOptionPane.showMessageDialog(rootPane, "Vyberte freelancera");
+        } else {
+            this.controller.startHiring(specialistIndex);
+        }
+
     }//GEN-LAST:event_hireBtnMouseReleased
 
     /**

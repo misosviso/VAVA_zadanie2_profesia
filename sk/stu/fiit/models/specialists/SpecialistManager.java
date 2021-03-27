@@ -45,4 +45,8 @@ public class SpecialistManager {
     public List<Specialist> getSpecialists() {
         return specialists;
     }
+
+    public Specialist getSpecificSpecialist(int specialistIndex) {
+        return specialists.get(specialistIndex);
+    }
 }

@@ -31,5 +31,18 @@ public class SecuritySpecialist extends Specialist{
     public void setNBU(boolean NBU) {
         this.NBU = NBU;
     }
+
+    @Override
+    public String getInformation() {
+        StringBuilder information = new StringBuilder();
+        information.append(getBasicInformation());
+        if(isNBU()){
+            information.append("\nNBU auditor: áno");
+        } else{
+            information.append("\nNBU auditor: nie");
+        }
+        
+        return information.toString();
+    }
     
 }

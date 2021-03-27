@@ -40,9 +40,14 @@ public class Programmer extends Specialist{
         super(name, MDcost, experience, highestEducation, certificates);
         this.type = type;
     }
-
-
     
-    
-    
+    @Override
+    public String getInformation() {
+        StringBuilder information = new StringBuilder();
+        information.append(getBasicInformation());
+        information.append("\nZaradenie: " + type);
+        return information.toString();
+        
+    }
+        
 }

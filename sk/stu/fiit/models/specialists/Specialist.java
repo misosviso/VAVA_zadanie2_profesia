@@ -5,13 +5,14 @@
  */
 package sk.stu.fiit.models.specialists;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
  * @author Admin
  */
-public abstract class Specialist {
+public abstract class Specialist implements GetInformation{
     
     protected String name;
     protected double MDcost;
@@ -26,7 +27,11 @@ public abstract class Specialist {
         this.experience = experience;
         this.highestEducation = highestEducation;
         this.hired = false;
-        this.certificates = certificates;
+        if(this.certificates == null){
+            this.certificates = new LinkedList<>();
+        } else{
+            this.certificates = certificates;
+        }      
     }
     
     public static void main(String[] args) {
@@ -107,6 +112,26 @@ public abstract class Specialist {
         else {
             return "Administrátor";
         }
+    }
+    
+    protected String getBasicInformation(){
+        StringBuilder information = new StringBuilder();
+        information.append("Špecializácia: " + this.getSpecialization());
+        information.append("\nMeno: " + this.name);
+        information.append("\nCena za Man-Day: " + MDcost);
+        information.append("\nPrax: " + experience);
+        information.append("\nVzdelanie: " + highestEducation);
+        
+        information.append("\nCertifikáty: ");
+        if(certificates.isEmpty()){
+            information.append("-");
+        } else{
+            certificates.forEach(cert -> {
+                information.append(cert).append(" ");
+            });
+        }
+        
+        return information.toString();
     }
     
 }

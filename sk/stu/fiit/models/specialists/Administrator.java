@@ -41,5 +41,14 @@ public class Administrator extends Specialist{
         this.type = type;
         this.platform = platform;               
     }
+
+    @Override
+    public String getInformation() {
+        StringBuilder information = new StringBuilder();
+        information.append(getBasicInformation());
+        information.append("\nZaradenie: " + type);
+        information.append("\nPreferovaná platforma: " + platform);
+        return information.toString();
+    }
     
 }

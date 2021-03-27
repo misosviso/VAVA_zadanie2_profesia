@@ -55,7 +55,12 @@ public class SpecialistManagerController {
     }
 
     public void startHiring(int specialistIndex) {
-        new HireSpecialistView(this).setVisible(true);
+        new HireSpecialistView(this, specialistIndex).setVisible(true);
+    }
+    
+    public String getSpecialistInfo(int specialistIndex){
+        Specialist specialist = this.manager.getSpecificSpecialist(specialistIndex);
+        return specialist.getInformation();
     }
     
     

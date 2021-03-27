@@ -240,9 +240,9 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
             JOptionPane.showMessageDialog(introPanel, "Prosím zadajte meno");
         } else{
             switch(typeCB.getSelectedIndex()){
-            case 0 -> setProgrammer();
-            case 1 -> setSecurity();
-            case 2 -> setAdministrator();         }
+                case 0 -> setProgrammer();
+                case 1 -> setSecurity();
+                case 2 -> setAdministrator();         }
             goToNextTab();
         }
     }//GEN-LAST:event_confirmBtnMouseReleased

@@ -14,15 +14,23 @@ import sk.stu.fiit.controllers.SpecialistManagerController;
 public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     
     private final SpecialistManagerController controller;
+    private final int specialistIndex;
 
     /**
      * Creates new form HireSpecialistView
      * @param controller
+     * @param specialistIndex
      */
-    public HireSpecialistView(SpecialistManagerController controller) {
+    public HireSpecialistView(SpecialistManagerController controller, int specialistIndex) {
         initComponents();
         setDarkNimbus();
         this.controller = controller;
+        this.specialistIndex = specialistIndex;
+        displayFreeLancer();
+    }
+    
+    private void displayFreeLancer(){
+        this.specialistInfoTP.setText(this.controller.getSpecialistInfo(specialistIndex));     
     }
 
     /**
@@ -39,12 +47,12 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         hireBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        specialistInfoTP = new javax.swing.JTextPane();
 
         jLabel1.setText("jLabel1");
 
@@ -62,14 +70,9 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
         jLabel3.setText("Prenajať freelancera");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 250, 120));
-
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Údaje o freelancerovi:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 250, -1));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -84,13 +87,18 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 100, 30));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 140, 30));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 140, 30));
+
+        specialistInfoTP.setEditable(false);
+        jScrollPane2.setViewportView(specialistInfoTP);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 250, 140));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,8 +118,8 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTextPane specialistInfoTP;
     // End of variables declaration//GEN-END:variables
 }
