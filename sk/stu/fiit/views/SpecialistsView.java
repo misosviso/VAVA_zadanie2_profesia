@@ -49,7 +49,7 @@ public final class SpecialistsView extends javax.swing.JFrame implements DarkNim
         jToolBar1 = new javax.swing.JToolBar();
         addBtn = new javax.swing.JButton();
         hireBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        goBackBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,9 +97,14 @@ public final class SpecialistsView extends javax.swing.JFrame implements DarkNim
 
         jDesktopPane1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 60, -1));
 
-        jButton1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jButton1.setText("Návrat");
-        jDesktopPane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        goBackBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        goBackBtn.setText("Návrat");
+        goBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                goBackBtnMouseReleased(evt);
+            }
+        });
+        jDesktopPane1.add(goBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe WP", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -140,6 +145,12 @@ public final class SpecialistsView extends javax.swing.JFrame implements DarkNim
 
     }//GEN-LAST:event_hireBtnMouseReleased
 
+    private void goBackBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackBtnMouseReleased
+        // TODO add your handling code here:
+        new InitView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_goBackBtnMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -173,8 +184,8 @@ public final class SpecialistsView extends javax.swing.JFrame implements DarkNim
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton goBackBtn;
     private javax.swing.JButton hireBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

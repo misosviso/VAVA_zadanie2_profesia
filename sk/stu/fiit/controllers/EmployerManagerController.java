@@ -18,6 +18,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import sk.stu.fiit.models.employers.Employer;
 import sk.stu.fiit.models.employers.EmployerManager;
+import sk.stu.fiit.models.hirings.Hiring;
+import sk.stu.fiit.models.hirings.HiringManager;
 
 /**
  *
@@ -26,6 +28,7 @@ import sk.stu.fiit.models.employers.EmployerManager;
 public class EmployerManagerController implements ListModels{
     
     private final EmployerManager manager = EmployerManager.getEmployerManager();
+    private final HiringManager hiringManager = HiringManager.getHiringManager();
     
     private BufferedImage createLogo(String pathToImage) throws IOException{
         if(pathToImage.equals("")){
@@ -82,6 +85,21 @@ public class EmployerManagerController implements ListModels{
         return employerModel;
     }
     
+    public DefaultListModel getHiredSpecialistsModel(int employerIndex){
+        Employer employer = this.manager.getSpecificEmployer(employerIndex);
+        List<Hiring> hirings = this.hiringManager.getEmployersHirings(employer);
+        DefaultListModel hiringModel = new DefaultListModel();
+        if (!hirings.isEmpty()) {
+            hirings.forEach((Hiring hiring) -> {
+            hiringModel.addElement(
+                    hiring.getHiredSpecialist().getSpecialization() +
+                    " " + hiring.getHiredSpecialist().getName() +
+                    " cena za MD: " + hiring.getHiredSpecialist().getMDcost()
+                );
+            }); 
+        }
+        return hiringModel;
+    }
     public DefaultComboBoxModel getCBModel(){
         List<Employer> employers = this.manager.getEmployers();
         DefaultComboBoxModel employersModel = new DefaultComboBoxModel();

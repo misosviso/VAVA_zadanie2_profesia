@@ -17,12 +17,12 @@ import sk.stu.fiit.models.specialists.Specialist;
  */
 public class HiringManager {
     
-    private static HiringManager instanceOfHM;
+    private static HiringManager instanceOfHM = null;
     private final List<Hiring> hirings;
 
     public static HiringManager getHiringManager() {
         if(HiringManager.instanceOfHM == null){
-            return new HiringManager();
+            HiringManager.instanceOfHM = new HiringManager();
         }
         return instanceOfHM;
     }
@@ -47,6 +47,17 @@ public class HiringManager {
     
     public Hiring getSpecificHiring(int index){
         return this.hirings.get(index);
+    }
+    
+    public List<Hiring> getEmployersHirings(Employer employer){
+        List<Hiring> employersHirings = new LinkedList<>();
+        for(Hiring hiring : this.hirings){
+            if(hiring.getHiringCompany().getName() == employer.getName()){
+                employersHirings.add(hiring);
+            }
+        }
+        return employersHirings;
+        
     }
     
     

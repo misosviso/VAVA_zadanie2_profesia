@@ -42,7 +42,7 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar1 = new javax.swing.JToolBar();
         manageEmployer = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        goBackBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
@@ -79,8 +79,13 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
 
         jDesktopPane1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 110, -1));
 
-        jButton1.setText("Návrat");
-        jDesktopPane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        goBackBtn.setText("Návrat");
+        goBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                goBackBtnMouseReleased(evt);
+            }
+        });
+        jDesktopPane1.add(goBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe WP", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,6 +115,12 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
             new ManageEmployerView(this.controller, selectedIndex).setVisible(true);
         }       
     }//GEN-LAST:event_manageEmployerMouseReleased
+
+    private void goBackBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackBtnMouseReleased
+        // TODO add your handling code here:
+        new InitView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_goBackBtnMouseReleased
     private void displayEmployers(){
         DefaultListModel quickModel = controller.getQuickModel();
         this.employersList.setModel(quickModel);
@@ -154,7 +165,7 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JButton addBtn;
     private javax.swing.JList<String> employersList;
     private javax.swing.JScrollPane employersSP;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton goBackBtn;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;

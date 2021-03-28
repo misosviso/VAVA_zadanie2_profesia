@@ -39,7 +39,7 @@ public class ManageEmployerView extends javax.swing.JFrame implements DarkNimbus
     }
     
     private void displayHired(){
-        this.hiredSpecialistsList.setModel(this.controller.getHiredSpecialists(employerIndex));
+        this.hiredSpecialistsList.setModel(this.controller.getHiredSpecialistsModel(employerIndex));
     }
 
 
