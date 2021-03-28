@@ -33,18 +33,22 @@ public class EmployerManagerController implements ListModels{
         return ImageIO.read(new File(pathToImage));
     }
     
-    public ImageIcon getLogo(int index) throws IOException{
-        BufferedImage logo = this.manager.getSpecificEmployer(index).getLogo();
-        if(logo == null){
+    public ImageIcon getLogo(int index){
+        BufferedImage companyLogo = this.manager.getSpecificEmployer(index).getLogo();
+        if(companyLogo == null){
             try {
-                logo = ImageIO.read(new File("data\\defaultLogo.png"));
+                companyLogo = ImageIO.read(new File("data\\defaultLogo.png"));
             } catch (IOException ex) {
                 Logger.getLogger(EmployerManagerController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        logo = resizeImage(logo, 150, 150);
-        ImageIcon imgLogo = new ImageIcon(logo);
-        return imgLogo;
+        try {
+            companyLogo = resizeImage(companyLogo, 150, 150);
+        } catch (IOException ex) {
+            Logger.getLogger(EmployerManagerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ImageIcon displayedLogo = new ImageIcon(companyLogo);
+        return displayedLogo;
     }
     
     private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
@@ -54,7 +58,6 @@ public class EmployerManagerController implements ListModels{
         graphics2D.dispose();
         return resizedImage;
     }
-    
     
     public void addEmployer(String name, String sector, int NOE, String pathToImage) throws IOException{
         BufferedImage logo = createLogo(pathToImage);

@@ -5,16 +5,22 @@
  */
 package sk.stu.fiit.views;
 
+import sk.stu.fiit.controllers.EmployerManagerController;
+
 /**
  *
  * @author Admin
  */
 public class ShowHiredView extends javax.swing.JFrame implements DarkNimbus{
+    
+    private final EmployerManagerController controller;
 
     /**
      * Creates new form ShowHiredView
+     * @param controller
      */
-    public ShowHiredView() {
+    public ShowHiredView(EmployerManagerController controller) {
+        this.controller = controller;
         initComponents();
         setDarkNimbus();
     }
