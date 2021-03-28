@@ -5,14 +5,16 @@
  */
 package sk.stu.fiit.views;
 
-import java.awt.Color;
-import javax.swing.UIManager;
+import javax.swing.DefaultListModel;
+import sk.stu.fiit.controllers.EmployerManagerController;
 
 /**
  *
  * @author Admin
  */
 public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
+    
+    private final EmployerManagerController controller = new EmployerManagerController();
 
     /**
      * Creates new form EmployersView
@@ -20,6 +22,7 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
     public EmployersView() {
         initComponents();
         setDarkNimbus();
+        displayEmployers();
     }
 
     /**
@@ -33,10 +36,11 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
 
         jButton2 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        specialistsList = new javax.swing.JList<>();
+        employersSP = new javax.swing.JScrollPane();
+        employersList = new javax.swing.JList<>();
         jToolBar1 = new javax.swing.JToolBar();
         showHiredBtn = new javax.swing.JButton();
+        showCompany = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -47,14 +51,9 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        specialistsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(specialistsList);
+        employersSP.setViewportView(employersList);
 
-        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 190));
+        jDesktopPane1.add(employersSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 190));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -70,6 +69,17 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
             }
         });
         jToolBar1.add(showHiredBtn);
+
+        showCompany.setText("Zobraziť");
+        showCompany.setFocusable(false);
+        showCompany.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        showCompany.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        showCompany.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                showCompanyMouseReleased(evt);
+            }
+        });
+        jToolBar1.add(showCompany);
 
         addBtn.setText("Pridať");
         addBtn.setFocusable(false);
@@ -106,6 +116,16 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         new ShowHiredView().setVisible(true);
     }//GEN-LAST:event_showHiredBtnMouseReleased
 
+    private void showCompanyMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showCompanyMouseReleased
+        // TODO add your handling code here:
+        int selectedIndex = employersList.getSelectedIndex();
+        new ShowCompanyView(this.controller, selectedIndex).setVisible(true);
+    }//GEN-LAST:event_showCompanyMouseReleased
+    private void displayEmployers(){
+        DefaultListModel quickModel = controller.getQuickModel();
+        this.employersList.setModel(quickModel);
+    }    
+    
     /**
      * @param args the command line arguments
      */
@@ -143,13 +163,14 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JList<String> employersList;
+    private javax.swing.JScrollPane employersSP;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton showCompany;
     private javax.swing.JButton showHiredBtn;
-    private javax.swing.JList<String> specialistsList;
     // End of variables declaration//GEN-END:variables
 }

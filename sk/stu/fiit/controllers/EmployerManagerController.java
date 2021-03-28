@@ -5,12 +5,16 @@
  */
 package sk.stu.fiit.controllers;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import sk.stu.fiit.models.employers.Employer;
 import sk.stu.fiit.models.employers.EmployerManager;
 
@@ -22,16 +26,38 @@ public class EmployerManagerController implements ListModels{
     
     private final EmployerManager manager = EmployerManager.getEmployerManager();
     
-    private BufferedImage getLogo(String pathToImage) throws IOException{
-        BufferedImage logo = null;
+    private BufferedImage createLogo(String pathToImage) throws IOException{
         if(pathToImage.equals("")){
-            logo = ImageIO.read(new File("data\\defaultLogo.png"));
+            return null;
         }
-        return logo;
+        return ImageIO.read(new File(pathToImage));
     }
     
+    public ImageIcon getLogo(int index) throws IOException{
+        BufferedImage logo = this.manager.getSpecificEmployer(index).getLogo();
+        if(logo == null){
+            try {
+                logo = ImageIO.read(new File("data\\defaultLogo.png"));
+            } catch (IOException ex) {
+                Logger.getLogger(EmployerManagerController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        logo = resizeImage(logo, 150, 150);
+        ImageIcon imgLogo = new ImageIcon(logo);
+        return imgLogo;
+    }
+    
+    private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics2D = resizedImage.createGraphics();
+        graphics2D.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+        graphics2D.dispose();
+        return resizedImage;
+    }
+    
+    
     public void addEmployer(String name, String sector, int NOE, String pathToImage) throws IOException{
-        BufferedImage logo = getLogo(pathToImage);
+        BufferedImage logo = createLogo(pathToImage);
         Employer employer = Employer.getEmployer(name, sector, NOE, logo);
         this.manager.addEmployer(employer);
     }
@@ -44,8 +70,8 @@ public class EmployerManagerController implements ListModels{
             specialists.forEach((Employer employer) -> {
             specialistsModel.addElement(
                     employer.getName() +
-                    "sektor: " + employer.getSector() +
-                    "počet zamestnancov: " + employer.getNumberOfEmployees()
+                    " sektor: " + employer.getSector() +
+                    " počet zamestnancov: " + employer.getNumberOfEmployees()
                 );
             }); 
         }

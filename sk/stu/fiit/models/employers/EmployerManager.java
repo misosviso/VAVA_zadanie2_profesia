@@ -29,7 +29,9 @@ public class EmployerManager {
     }
     
     private void loadDefaultEmployers(){
-        
+        this.employers.add(Employer.getEmployer("Firma1", "IT", 22, null));
+        this.employers.add(Employer.getEmployer("Firma2", "Economix", 1025, null));
+        this.employers.add(Employer.getEmployer("Firma3", "Marketing", 159, null)); 
     }  
         
     public void addEmployer(Employer employer){
