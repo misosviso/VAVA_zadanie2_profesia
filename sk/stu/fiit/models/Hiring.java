@@ -5,10 +5,16 @@
  */
 package sk.stu.fiit.models;
 
+import sk.stu.fiit.models.employers.Employer;
+import sk.stu.fiit.models.specialists.Specialist;
+
 /**
  *
  * @author Admin
  */
 public class Hiring {
+    
+    private Specialist hiredSpecialist;
+    private Employer hiringCompany;
     
 }

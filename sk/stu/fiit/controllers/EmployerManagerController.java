@@ -14,9 +14,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import sk.stu.fiit.models.employers.Employer;
 import sk.stu.fiit.models.employers.EmployerManager;
+import sk.stu.fiit.models.specialists.Specialist;
 
 /**
  *
@@ -33,7 +35,7 @@ public class EmployerManagerController implements ListModels{
         return ImageIO.read(new File(pathToImage));
     }
     
-    public ImageIcon getLogo(int index){
+    public ImageIcon getLogo(int index, int width, int height){
         BufferedImage companyLogo = this.manager.getSpecificEmployer(index).getLogo();
         if(companyLogo == null){
             try {
@@ -43,7 +45,7 @@ public class EmployerManagerController implements ListModels{
             }
         }
         try {
-            companyLogo = resizeImage(companyLogo, 150, 150);
+            companyLogo = resizeImage(companyLogo, width, height);
         } catch (IOException ex) {
             Logger.getLogger(EmployerManagerController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -81,4 +83,35 @@ public class EmployerManagerController implements ListModels{
         return specialistsModel;
     }
     
+    public DefaultListModel getHiredSpecialists(int employerIndex){
+        List<Specialist> specialists = this.manager.getHiredSpecialists(employerIndex);
+        DefaultListModel specialistsModel = new DefaultListModel();
+        if (!specialists.isEmpty()) {
+            specialists.forEach((Specialist specialist) -> {
+            specialistsModel.addElement(
+                    specialist.getSpecialization() +
+                    " " + specialist.getName() +
+                    " cena za MD: " + specialist.getMDcost()
+                );
+            }); 
+        }
+        return specialistsModel;
+    }
+    
+    public String getCompanyName(int index){
+        return this.manager.getSpecificEmployer(index).getName();
+    }
+    
+    public String getCompanySector(int index){
+        return this.manager.getSpecificEmployer(index).getSector();               
+    }
+    
+    public int getNOP(int index){
+        return this.manager.getSpecificEmployer(index).getNumberOfEmployees();
+    }
+    
+    public void unhireSpecialist(int employerIndex, int specialistIndex){
+        this.manager.unhireSpecialist(employerIndex, specialistIndex);
+    }
+
 }

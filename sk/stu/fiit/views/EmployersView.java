@@ -6,6 +6,7 @@
 package sk.stu.fiit.views;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import sk.stu.fiit.controllers.EmployerManagerController;
 
 /**
@@ -39,8 +40,7 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         employersSP = new javax.swing.JScrollPane();
         employersList = new javax.swing.JList<>();
         jToolBar1 = new javax.swing.JToolBar();
-        showHiredBtn = new javax.swing.JButton();
-        showCompany = new javax.swing.JButton();
+        manageEmployer = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -59,31 +59,21 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
 
-        showHiredBtn.setText("Zobraziť prenájmy");
-        showHiredBtn.setFocusable(false);
-        showHiredBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        showHiredBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        showHiredBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        manageEmployer.setText("Spravovať");
+        manageEmployer.setFocusable(false);
+        manageEmployer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        manageEmployer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        manageEmployer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                showHiredBtnMouseReleased(evt);
+                manageEmployerMouseReleased(evt);
             }
         });
-        jToolBar1.add(showHiredBtn);
-
-        showCompany.setText("Zobraziť");
-        showCompany.setFocusable(false);
-        showCompany.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        showCompany.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        showCompany.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                showCompanyMouseReleased(evt);
-            }
-        });
-        jToolBar1.add(showCompany);
+        jToolBar1.add(manageEmployer);
 
         addBtn.setText("Pridať");
         addBtn.setFocusable(false);
         addBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        addBtn.setPreferredSize(new java.awt.Dimension(122, 28));
         addBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(addBtn);
 
@@ -111,16 +101,15 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void showHiredBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showHiredBtnMouseReleased
-        // TODO add your handling code here:
-        new ShowHiredView().setVisible(true);
-    }//GEN-LAST:event_showHiredBtnMouseReleased
-
-    private void showCompanyMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showCompanyMouseReleased
+    private void manageEmployerMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEmployerMouseReleased
         // TODO add your handling code here:
         int selectedIndex = employersList.getSelectedIndex();
-        new ShowCompanyView(this.controller, selectedIndex).setVisible(true);
-    }//GEN-LAST:event_showCompanyMouseReleased
+        if(selectedIndex < 0){
+            JOptionPane.showMessageDialog(rootPane, "Vyberte spoločnosť");
+        } else{
+            new ManageEmployerView(this.controller, selectedIndex).setVisible(true);
+        }       
+    }//GEN-LAST:event_manageEmployerMouseReleased
     private void displayEmployers(){
         DefaultListModel quickModel = controller.getQuickModel();
         this.employersList.setModel(quickModel);
@@ -170,7 +159,6 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JButton showCompany;
-    private javax.swing.JButton showHiredBtn;
+    private javax.swing.JButton manageEmployer;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,10 @@
 package sk.stu.fiit.models.employers;
 
 import java.awt.image.BufferedImage;
+import java.util.LinkedList;
+import java.util.List;
+import sk.stu.fiit.models.Hiring;
+import sk.stu.fiit.models.specialists.Specialist;
 
 /**
  *
@@ -21,12 +25,26 @@ public class Employer {
     private String sector;
     private int numberOfEmployees;
     private BufferedImage logo;
+    private final List<Hiring> hiredSpecialists;
+
+    public List<Hiring> getHiredSpecialists() {
+        return hiredSpecialists;
+    }
+    
+    public void hireSpecialist(Hiring hiring){
+        this.hiredSpecialists.add(hiring);
+    }
+    
+    public void unhireSpecialist(int index){
+        this.hiredSpecialists.remove(index);
+    }
 
     private Employer(String name, String sector, int numberOfEmployees, BufferedImage logo) {
         this.name = name;
         this.sector = sector;
         this.numberOfEmployees = numberOfEmployees;
         this.logo = logo;
+        this.hiredSpecialists = new LinkedList<>();
     }
 
     public String getName() {
