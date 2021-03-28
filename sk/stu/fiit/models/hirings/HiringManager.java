@@ -36,9 +36,10 @@ public class HiringManager {
         this.hirings.add(newHiring);
     }
     
-    public void cancelHiring(int index){
-        this.hirings.get(index).cancel();
-        this.hirings.remove(index);
+    public void cancelHiring(int hiringIndex, Employer employer){
+        Hiring cancelledHiring = getEmployersHirings(employer).get(hiringIndex);
+        cancelledHiring.cancel();
+        hirings.remove(cancelledHiring);
     }
 
     public List<Hiring> getHirings() {
@@ -52,7 +53,7 @@ public class HiringManager {
     public List<Hiring> getEmployersHirings(Employer employer){
         List<Hiring> employersHirings = new LinkedList<>();
         for(Hiring hiring : this.hirings){
-            if(hiring.getHiringCompany().getName() == employer.getName()){
+            if(hiring.getHiringCompany() == employer){
                 employersHirings.add(hiring);
             }
         }

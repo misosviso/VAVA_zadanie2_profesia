@@ -124,6 +124,11 @@ public class EmployerManagerController implements ListModels{
     public int getNOP(int index){
         return this.manager.getSpecificEmployer(index).getNumberOfEmployees();
     }
+
+    public void unhireSpecialist(int employerINdex, int selectedHiringIndex) {
+        Employer employer = this.manager.getSpecificEmployer(employerINdex);
+        this.hiringManager.cancelHiring(selectedHiringIndex, employer);
+    }
     
 
 }

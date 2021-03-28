@@ -154,7 +154,7 @@ public class ManageEmployerView extends javax.swing.JFrame implements DarkNimbus
         if(selectedSpecialistIndex < 0){
             JOptionPane.showMessageDialog(rootPane, "vyberte špecialistu");
         } else{
-//            this.controller.unhireSpecialist(employerIndex, selectedSpecialistIndex);
+            this.controller.unhireSpecialist(employerIndex, selectedSpecialistIndex);
             displayCompany();
         }
     }//GEN-LAST:event_cancelHiringBtnMouseReleased
