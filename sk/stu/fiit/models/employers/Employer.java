@@ -8,7 +8,7 @@ package sk.stu.fiit.models.employers;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
-import sk.stu.fiit.models.Hiring;
+import sk.stu.fiit.models.hirings.Hiring;
 import sk.stu.fiit.models.specialists.Specialist;
 
 /**

@@ -7,8 +7,6 @@ package sk.stu.fiit.models.employers;
 
 import java.util.LinkedList;
 import java.util.List;
-import sk.stu.fiit.models.specialists.Programmer;
-import sk.stu.fiit.models.specialists.Specialist;
 
 /**
  *
@@ -32,9 +30,6 @@ public class EmployerManager {
     
     private void loadDefaultEmployers(){
         this.employers.add(Employer.getEmployer("Firma1", "IT", 22, null));
-        this.employers.get(0).hireSpecialist(Programmer.getProgrammer("Nejaky random", 25, 15, "stredna skola", null, "javascript"));
-        this.employers.get(0).hireSpecialist(Programmer.getProgrammer("Nejaky random 2", 25, 15, "stredna skola", null, "javascript"));
-        this.employers.get(0).hireSpecialist(Programmer.getProgrammer("Nejaky random 3", 25, 15, "stredna skola", null, "javascript"));
         this.employers.add(Employer.getEmployer("Firma2", "Economix", 1025, null));
         this.employers.add(Employer.getEmployer("Firma3", "Marketing", 159, null)); 
     }  
@@ -50,18 +45,5 @@ public class EmployerManager {
     public Employer getSpecificEmployer(int employerIndex) {
         return employers.get(employerIndex);
     }
-    
-    public List<Specialist> getHiredSpecialists(int employerIndex){
-        return this.employers.get(employerIndex).getHiredSpecialists();
-    }
-    
-    public void hireSpecialist(int employerIndex, Specialist specialist){
-        this.employers.get(employerIndex).hireSpecialist(specialist);
-    }
-    
-    public void unhireSpecialist(int employerIndex, int specialistIndex){
-        this.employers.get(employerIndex).unhireSpecialist(specialistIndex);
-    }
-    
     
 }

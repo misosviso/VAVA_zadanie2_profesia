@@ -5,6 +5,8 @@
  */
 package sk.stu.fiit.views;
 
+import sk.stu.fiit.controllers.EmployerManagerController;
+import sk.stu.fiit.controllers.HiringManagerController;
 import sk.stu.fiit.controllers.SpecialistManagerController;
 
 /**
@@ -13,24 +15,33 @@ import sk.stu.fiit.controllers.SpecialistManagerController;
  */
 public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     
-    private final SpecialistManagerController controller;
+    private final SpecialistManagerController specialistController;
+    private final EmployerManagerController employerController = new EmployerManagerController();
+    private final HiringManagerController hiringController = new HiringManagerController();
+    private final SpecialistsView parentView;
     private final int specialistIndex;
 
     /**
      * Creates new form HireSpecialistView
+     * @param parent
      * @param controller
      * @param specialistIndex
      */
-    public HireSpecialistView(SpecialistManagerController controller, int specialistIndex) {
+    public HireSpecialistView(SpecialistsView parent, SpecialistManagerController controller, int specialistIndex) {
         initComponents();
         setDarkNimbus();
-        this.controller = controller;
+        this.parentView = parent;
+        this.specialistController = controller;
         this.specialistIndex = specialistIndex;
         displayFreeLancers();
+        displayEmployers();
     }
     
     private void displayFreeLancers(){
-        this.specialistInfoTP.setText(this.controller.getSpecialistInfo(specialistIndex));     
+        this.specialistInfoTP.setText(this.specialistController.getSpecialistInfo(specialistIndex));     
+    }
+    private void displayEmployers(){
+        this.employersCB.setModel(this.employerController.getCBModel());
     }
 
     /**
@@ -50,7 +61,7 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
         jLabel5 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         hireBtn = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        employersCB = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         specialistInfoTP = new javax.swing.JTextPane();
 
@@ -82,12 +93,17 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
         hireBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         hireBtn.setPreferredSize(new java.awt.Dimension(100, 30));
         hireBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        hireBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                hireBtnMouseReleased(evt);
+            }
+        });
         jToolBar1.add(hireBtn);
 
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 100, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 140, 30));
+        employersCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(employersCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 140, 30));
 
         specialistInfoTP.setEditable(false);
         jScrollPane2.setViewportView(specialistInfoTP);
@@ -108,10 +124,18 @@ public class HireSpecialistView extends javax.swing.JFrame implements DarkNimbus
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void hireBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hireBtnMouseReleased
+        // TODO add your handling code here:
+        int employerIndex = this.employersCB.getSelectedIndex();
+        this.hiringController.createHiring(specialistIndex, employerIndex);
+        this.parentView.displaySpecialists();
+        dispose();
+    }//GEN-LAST:event_hireBtnMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> employersCB;
     private javax.swing.JButton hireBtn;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -49,4 +49,9 @@ public class SpecialistManager {
     public Specialist getSpecificSpecialist(int specialistIndex) {
         return specialists.get(specialistIndex);
     }
+
+    public boolean isHired(int specialistIndex) {
+        return this.specialists.get(specialistIndex).isHired();
+    }
+
 }

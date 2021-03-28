@@ -134,5 +134,12 @@ public abstract class Specialist implements GetSpecialistInformation{
         
         return information.toString();
     }
+
+    public String getStatus() {
+        if(hired){
+            return "prenajatý";
+        }
+        return "voľný";
+    }
     
 }

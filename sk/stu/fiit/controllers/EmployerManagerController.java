@@ -13,12 +13,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import sk.stu.fiit.models.employers.Employer;
 import sk.stu.fiit.models.employers.EmployerManager;
-import sk.stu.fiit.models.specialists.Specialist;
 
 /**
  *
@@ -69,33 +68,31 @@ public class EmployerManagerController implements ListModels{
 
     @Override
     public DefaultListModel getQuickModel() {
-        List<Employer> specialists = this.manager.getEmployers();
-        DefaultListModel specialistsModel = new DefaultListModel();
-        if (!specialists.isEmpty()) {
-            specialists.forEach((Employer employer) -> {
-            specialistsModel.addElement(
+        List<Employer> employers = this.manager.getEmployers();
+        DefaultListModel employerModel = new DefaultListModel();
+        if (!employers.isEmpty()) {
+            employers.forEach((Employer employer) -> {
+            employerModel.addElement(
                     employer.getName() +
                     " sektor: " + employer.getSector() +
                     " počet zamestnancov: " + employer.getNumberOfEmployees()
                 );
             }); 
         }
-        return specialistsModel;
+        return employerModel;
     }
     
-    public DefaultListModel getHiredSpecialists(int employerIndex){
-        List<Specialist> specialists = this.manager.getHiredSpecialists(employerIndex);
-        DefaultListModel specialistsModel = new DefaultListModel();
-        if (!specialists.isEmpty()) {
-            specialists.forEach((Specialist specialist) -> {
-            specialistsModel.addElement(
-                    specialist.getSpecialization() +
-                    " " + specialist.getName() +
-                    " cena za MD: " + specialist.getMDcost()
+    public DefaultComboBoxModel getCBModel(){
+        List<Employer> employers = this.manager.getEmployers();
+        DefaultComboBoxModel employersModel = new DefaultComboBoxModel();
+        if (!employers.isEmpty()) {
+            employers.forEach((Employer employer) -> {
+            employersModel.addElement(
+                    employer.getName()
                 );
             }); 
         }
-        return specialistsModel;
+        return employersModel;
     }
     
     public String getCompanyName(int index){
@@ -110,8 +107,5 @@ public class EmployerManagerController implements ListModels{
         return this.manager.getSpecificEmployer(index).getNumberOfEmployees();
     }
     
-    public void unhireSpecialist(int employerIndex, int specialistIndex){
-        this.manager.unhireSpecialist(employerIndex, specialistIndex);
-    }
 
 }

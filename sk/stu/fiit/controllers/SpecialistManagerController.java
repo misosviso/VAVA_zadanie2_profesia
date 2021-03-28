@@ -12,7 +12,9 @@ import sk.stu.fiit.models.specialists.Programmer;
 import sk.stu.fiit.models.specialists.SecuritySpecialist;
 import sk.stu.fiit.models.specialists.Specialist;
 import sk.stu.fiit.models.specialists.SpecialistManager;
+import sk.stu.fiit.others.SpecialistAlreadyHiredException;
 import sk.stu.fiit.views.HireSpecialistView;
+import sk.stu.fiit.views.SpecialistsView;
 
 /**
  *
@@ -44,19 +46,19 @@ public class SpecialistManagerController implements ListModels{
             specialistsModel.addElement(
                     specialist.getSpecialization() +
                     " " + specialist.getName() +
-                    " cena za MD: " + specialist.getMDcost()
+                    " cena za MD: " + specialist.getMDcost() +
+                    " stav: " + specialist.getStatus()
                 );
             }); 
         }
         return specialistsModel;
     }
 
-    public void hireSpecialist(int specialistIndex) {
-        
-    }
-
-    public void startHiring(int specialistIndex) {
-        new HireSpecialistView(this, specialistIndex).setVisible(true);
+    public void startHireSpecialist(SpecialistsView view, int specialistIndex) throws SpecialistAlreadyHiredException {
+        if(this.manager.isHired(specialistIndex)){
+            throw new SpecialistAlreadyHiredException();
+        }
+        new HireSpecialistView(view, this, specialistIndex).setVisible(true);
     }
     
     public String getSpecialistInfo(int specialistIndex){
