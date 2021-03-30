@@ -55,6 +55,7 @@ public class EmployerManagerController implements ListModels{
         return displayedLogo;
     }
     
+    
     private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
         BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D = resizedImage.createGraphics();
