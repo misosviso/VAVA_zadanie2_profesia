@@ -40,10 +40,6 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         introPanel = new javax.swing.JPanel();
         typeCB = new javax.swing.JComboBox<>();
@@ -59,7 +55,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar3 = new javax.swing.JToolBar();
         confirmBtn1 = new javax.swing.JButton();
         jToolBar4 = new javax.swing.JToolBar();
-        goMenuBtn1 = new javax.swing.JButton();
+        goBack = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -80,14 +76,6 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jLabel9 = new javax.swing.JLabel();
         MDSpinner = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
-
-        jLabel3.setText("jLabel3");
-
-        jLabel10.setText("jLabel10");
-
-        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,6 +116,11 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         goMenuBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         goMenuBtn.setText("Návrat");
         goMenuBtn.setPreferredSize(new java.awt.Dimension(80, 28));
+        goMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                goMenuBtnMouseReleased(evt);
+            }
+        });
         jToolBar2.add(goMenuBtn);
 
         introPanel.add(jToolBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 90, 40));
@@ -158,10 +151,15 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar4.setFloatable(false);
         jToolBar4.setRollover(true);
 
-        goMenuBtn1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        goMenuBtn1.setText("Návrat");
-        goMenuBtn1.setPreferredSize(new java.awt.Dimension(80, 28));
-        jToolBar4.add(goMenuBtn1);
+        goBack.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        goBack.setText("Návrat");
+        goBack.setPreferredSize(new java.awt.Dimension(80, 28));
+        goBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                goBackMouseReleased(evt);
+            }
+        });
+        jToolBar4.add(goBack);
 
         infoPanel.add(jToolBar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 90, 40));
 
@@ -209,6 +207,11 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         goMenuBtn2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         goMenuBtn2.setText("Návrat");
         goMenuBtn2.setPreferredSize(new java.awt.Dimension(80, 28));
+        goMenuBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                goBackMouseReleased(evt);
+            }
+        });
         jToolBar5.add(goMenuBtn2);
 
         MDPanel.add(jToolBar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 90, 40));
@@ -233,7 +236,7 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         jLabel9.setText("Určite cenu za Man-Day");
         MDPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, -1));
 
-        MDSpinner.setModel(new javax.swing.SpinnerNumberModel(50, 0, null, 5));
+        MDSpinner.setModel(new javax.swing.SpinnerNumberModel(50.0d, 0.0d, null, 5.0d));
         MDPanel.add(MDSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 90, -1));
 
         jLabel11.setText("Cena");
@@ -314,6 +317,16 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         dispose();
     }//GEN-LAST:event_confirmBtn2MouseReleased
 
+    private void goMenuBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goMenuBtnMouseReleased
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_goMenuBtnMouseReleased
+
+    private void goBackMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackMouseReleased
+        // TODO add your handling code here:
+        goToPrevTab();
+    }//GEN-LAST:event_goBackMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MDPanel;
@@ -328,17 +341,14 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JButton confirmBtn1;
     private javax.swing.JButton confirmBtn2;
     private javax.swing.JTextField eduTF;
+    private javax.swing.JButton goBack;
     private javax.swing.JButton goMenuBtn;
-    private javax.swing.JButton goMenuBtn1;
     private javax.swing.JButton goMenuBtn2;
     private javax.swing.JPanel infoPanel;
     private javax.swing.JPanel introPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -346,7 +356,6 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
@@ -392,8 +401,12 @@ public class AddSpecialistView extends javax.swing.JFrame implements DarkNimbus{
         return (Integer) xpSpinner.getValue();
         
     }
-    private int getMD() throws ParseException{
+    private double getMD() throws ParseException{
         MDSpinner.commitEdit();
-        return (Integer) MDSpinner.getValue();
+        return (Double) MDSpinner.getValue();
+    }
+    private void goToPrevTab() {
+        int currentIndex = jTabbedPane1.getSelectedIndex();
+        jTabbedPane1.setSelectedIndex(currentIndex - 1);
     }
 }

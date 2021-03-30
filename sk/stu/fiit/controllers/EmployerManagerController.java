@@ -64,6 +64,9 @@ public class EmployerManagerController implements ListModels{
     }
     
     public void addEmployer(String name, String sector, int NOE, String pathToImage) throws IOException{
+        System.out.println(pathToImage);
+        pathToImage = pathToImage.replace("\"", "");
+        System.out.println(pathToImage);
         BufferedImage logo = createLogo(pathToImage);
         Employer employer = Employer.getEmployer(name, sector, NOE, logo);
         this.manager.addEmployer(employer);

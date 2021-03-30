@@ -75,6 +75,11 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         addBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         addBtn.setPreferredSize(new java.awt.Dimension(122, 28));
         addBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                addBtnMouseReleased(evt);
+            }
+        });
         jToolBar1.add(addBtn);
 
         jDesktopPane1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 110, -1));
@@ -121,7 +126,12 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         new InitView().setVisible(true);
         dispose();
     }//GEN-LAST:event_goBackBtnMouseReleased
-    private void displayEmployers(){
+
+    private void addBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseReleased
+        // TODO add your handling code here:
+        new AddCompanyView(this, this.controller).setVisible(true);
+    }//GEN-LAST:event_addBtnMouseReleased
+    public void displayEmployers(){
         DefaultListModel quickModel = controller.getQuickModel();
         this.employersList.setModel(quickModel);
     }    
