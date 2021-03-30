@@ -20,7 +20,6 @@ public class AddCompanyView extends javax.swing.JFrame {
     
     private final EmployersView parent;
     private final EmployerManagerController controller;
-    private String logoPath;
 
     /**
      * Creates new form AddCompanyView
@@ -56,6 +55,9 @@ public class AddCompanyView extends javax.swing.JFrame {
         sectorTF = new javax.swing.JTextField();
         noeSpinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        logoTA = new javax.swing.JTextArea();
 
         jLabel1.setText("jLabel1");
 
@@ -104,20 +106,31 @@ public class AddCompanyView extends javax.swing.JFrame {
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 100, 30));
 
         jLabel12.setText("Počet zamestnancov");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 30));
 
         jLabel14.setText("Oblasť podnikania");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, 30));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, 30));
         jPanel1.add(nameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 220, -1));
-        jPanel1.add(sectorTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 220, -1));
+        jPanel1.add(sectorTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 220, -1));
 
         noeSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 10));
-        jPanel1.add(noeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 70, -1));
+        jPanel1.add(noeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 70, -1));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Vytvoriť novú spoločnosť");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 330, -1));
+
+        jLabel3.setText("Vybraté logo");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 110, 30));
+
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        logoTA.setColumns(20);
+        logoTA.setRows(5);
+        jScrollPane1.setViewportView(logoTA);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 220, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 270));
 
@@ -143,8 +156,9 @@ public class AddCompanyView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Zlý formát počtu zamestnancov");
             return;
         }
+        String pathToLogo = this.logoTA.getText();
         try {
-            this.controller.addEmployer(name, sector, noe, logoPath);
+            this.controller.addEmployer(name, sector, noe, pathToLogo);
             parent.displayEmployers();
             dispose();
         } catch (IOException ex) {
@@ -160,7 +174,7 @@ public class AddCompanyView extends javax.swing.JFrame {
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
-            this.logoPath = fileChooser.getSelectedFile().getAbsolutePath();
+            this.logoTA.setText(fileChooser.getSelectedFile().getAbsolutePath());
 }
     }//GEN-LAST:event_findLogoBtn1MouseReleased
 
@@ -173,9 +187,12 @@ public class AddCompanyView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JTextArea logoTA;
     private javax.swing.JTextField nameTF;
     private javax.swing.JSpinner noeSpinner;
     private javax.swing.JTextField sectorTF;
