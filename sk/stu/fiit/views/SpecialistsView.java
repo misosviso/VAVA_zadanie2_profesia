@@ -5,8 +5,6 @@
  */
 package sk.stu.fiit.views;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import sk.stu.fiit.controllers.SpecialistManagerController;
@@ -27,6 +25,7 @@ public final class SpecialistsView extends javax.swing.JFrame implements DarkNim
         initComponents();
         setDarkNimbus();
         displaySpecialists();
+        this.setTitle("Prehľad freelancerov");
     }
     
     public void displaySpecialists(){

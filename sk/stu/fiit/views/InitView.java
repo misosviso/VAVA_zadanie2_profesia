@@ -16,6 +16,7 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
      */
     public InitView() {
         initComponents();
+        this.setTitle("IT - Profesia");
         setDarkNimbus();
     }
 
@@ -33,7 +34,6 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar1 = new javax.swing.JToolBar();
         companiesBtn = new javax.swing.JButton();
         specialistsBtn = new javax.swing.JButton();
-        jobsBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
@@ -41,7 +41,7 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jDesktopPane1.setAutoscrolls(true);
-        jDesktopPane1.setLayout(new net.miginfocom.swing.MigLayout());
+        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jToolBar1.setBackground(new java.awt.Color(255, 0, 0));
         jToolBar1.setFloatable(false);
@@ -55,6 +55,7 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
         companiesBtn.setText("Spoločnosti");
         companiesBtn.setFocusable(false);
         companiesBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        companiesBtn.setPreferredSize(new java.awt.Dimension(150, 50));
         companiesBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         companiesBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -69,6 +70,7 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
         specialistsBtn.setText("IT Freelanceri");
         specialistsBtn.setFocusable(false);
         specialistsBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        specialistsBtn.setPreferredSize(new java.awt.Dimension(150, 50));
         specialistsBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         specialistsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -77,37 +79,22 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
         });
         jToolBar1.add(specialistsBtn);
 
-        jobsBtn.setBackground(new java.awt.Color(255, 0, 51));
-        jobsBtn.setFont(new java.awt.Font("Segoe WP", 1, 18)); // NOI18N
-        jobsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        jobsBtn.setText("Pracovné ponuky");
-        jobsBtn.setFocusable(false);
-        jobsBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jobsBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jobsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jobsBtnMouseReleased(evt);
-            }
-        });
-        jToolBar1.add(jobsBtn);
-
-        jDesktopPane1.add(jToolBar1);
+        jDesktopPane1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe WP", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("IT Profesia");
-        jDesktopPane1.add(jLabel1);
+        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
         );
 
         pack();
@@ -124,12 +111,6 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
         new SpecialistsView().setVisible(true);
         dispose();
     }//GEN-LAST:event_specialistsBtnMouseReleased
-
-    private void jobsBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobsBtnMouseReleased
-        // TODO add your handling code here:
-        new JobsView().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jobsBtnMouseReleased
 
     /**
      * @param args the command line arguments
@@ -172,7 +153,6 @@ public class InitView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JButton jobsBtn;
     private javax.swing.JButton specialistsBtn;
     // End of variables declaration//GEN-END:variables
 }

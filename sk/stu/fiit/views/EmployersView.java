@@ -13,7 +13,7 @@ import sk.stu.fiit.controllers.EmployerManagerController;
  *
  * @author Admin
  */
-public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
+public final class EmployersView extends javax.swing.JFrame implements DarkNimbus{
     
     private final EmployerManagerController controller = new EmployerManagerController();
 
@@ -24,6 +24,7 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         initComponents();
         setDarkNimbus();
         displayEmployers();
+        this.setTitle("Prehľad spoločností");
     }
 
     /**
@@ -42,8 +43,9 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar1 = new javax.swing.JToolBar();
         manageEmployer = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
-        goBackBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jToolBar2 = new javax.swing.JToolBar();
+        goBackBtn = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -59,9 +61,11 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
 
+        manageEmployer.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         manageEmployer.setText("Spravovať");
         manageEmployer.setFocusable(false);
         manageEmployer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        manageEmployer.setPreferredSize(new java.awt.Dimension(122, 28));
         manageEmployer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         manageEmployer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -70,6 +74,7 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
         });
         jToolBar1.add(manageEmployer);
 
+        addBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         addBtn.setText("Pridať");
         addBtn.setFocusable(false);
         addBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -84,18 +89,26 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
 
         jDesktopPane1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 110, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe WP", 1, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Zoznam spoločností");
+        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 170, -1));
+
+        jToolBar2.setFloatable(false);
+        jToolBar2.setRollover(true);
+
+        goBackBtn.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         goBackBtn.setText("Návrat");
+        goBackBtn.setMaximumSize(new java.awt.Dimension(6, 28));
+        goBackBtn.setPreferredSize(new java.awt.Dimension(122, 28));
         goBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 goBackBtnMouseReleased(evt);
             }
         });
-        jDesktopPane1.add(goBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        jToolBar2.add(goBackBtn);
 
-        jLabel1.setFont(new java.awt.Font("Segoe WP", 1, 16)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Zoznam zamestnávateľov");
-        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        jDesktopPane1.add(jToolBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,6 +193,7 @@ public class EmployersView extends javax.swing.JFrame implements DarkNimbus{
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JButton manageEmployer;
     // End of variables declaration//GEN-END:variables
 }
