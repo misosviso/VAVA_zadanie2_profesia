@@ -163,7 +163,17 @@ public class AddCompanyView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmBtnMouseReleased
-        // TODO add your handling code here:       
+        // TODO add your handling code here:
+        String name = nameTF.getText();
+        String sector = sectorTF.getText();
+        if(name.equals("")){
+            JOptionPane.showMessageDialog(this, "Zadajte meno spoločnosti");
+            return;
+        }
+        if(sector.equals("")){
+            JOptionPane.showMessageDialog(this, "Zadajte oblasť podnikania");
+            return;
+        }
         goToNextTab();
     }//GEN-LAST:event_confirmBtnMouseReleased
 
@@ -176,11 +186,19 @@ public class AddCompanyView extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = nameTF.getText();
         String sector = sectorTF.getText();
+        if(name.equals("")){
+            JOptionPane.showMessageDialog(this, "Nezadali ste meno spoločnosti");
+            return;
+        }
+        if(sector.equals("")){
+            JOptionPane.showMessageDialog(this, "Nezadali ste oblasť podnikania");
+            return;
+        }
         int noe;
         try {
             noe = getNOE();
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(parent, "nespávny formát počtu zamestnancov");
+            JOptionPane.showMessageDialog(this, "nespávny formát počtu zamestnancov");
             return;
         }
         String pathToImage = pathTF.getText();

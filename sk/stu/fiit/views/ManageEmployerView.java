@@ -150,12 +150,15 @@ public class ManageEmployerView extends javax.swing.JFrame implements DarkNimbus
 
     private void cancelHiringBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelHiringBtnMouseReleased
         // TODO add your handling code here:
-        int selectedSpecialistIndex = this.hiredSpecialistsList.getSelectedIndex();
-        if(selectedSpecialistIndex < 0){
-            JOptionPane.showMessageDialog(rootPane, "vyberte špecialistu");
-        } else{
-            this.controller.unhireSpecialist(employerIndex, selectedSpecialistIndex);
-            displayCompany();
+        int userInput = JOptionPane.showConfirmDialog(rootPane, "Naozaj chcete zrušiť prenájom?");
+        if(userInput == JOptionPane.YES_OPTION){
+            int selectedSpecialistIndex = this.hiredSpecialistsList.getSelectedIndex();
+            if(selectedSpecialistIndex < 0){
+                JOptionPane.showMessageDialog(rootPane, "vyberte špecialistu");
+            } else{
+                this.controller.unhireSpecialist(employerIndex, selectedSpecialistIndex);
+                displayCompany();
+            }
         }
     }//GEN-LAST:event_cancelHiringBtnMouseReleased
 
